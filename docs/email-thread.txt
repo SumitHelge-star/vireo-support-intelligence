@@ -1,0 +1,33 @@
+From: Priya Raman <priya.raman@vireoaudio.com>
+To: Support Analytics Project
+Subject: Support Data & Project Scope
+
+We've got about eighteen months of support tickets and honestly nobody reads them. Every agent writes a note when they close a ticket, and customers write whatever they write. Can you build something that gives me a weekly digest of what people are complaining about? And a leaderboard of agents by tickets closed per week - I want to see who's pulling their weight. There must be something useful in there. Keep it simple please, we don't want a massive platform.
+
+--------------------------------------------------
+From: Sameer <sameer.k@vireoaudio.com> (Helpdesk Administrator)
+To: Priya Raman, Support Analytics Project
+Subject: Re: Support Data & Project Scope
+
+A heads up on the export: everything before 14 September 2025 came from Freshdesk when we migrated. The new helpdesk re-imported a chunk of the old data during reconciliation so some ticket IDs might look odd. The timestamps are as displayed in the helpdesk. Legacy resolution times were reconstructed from the event log so I didn't touch them manually.
+
+--------------------------------------------------
+From: Arjun Mehta <arjun.m@vireoaudio.com> (Finance Controller)
+To: Priya Raman, Support Analytics Project
+Subject: Re: Support Data & Project Scope
+
+My older estimate was Rs 180/contact, but let's see what the solution actually saves. A "reading tool" is only a nice-to-have. If the solution takes contacts out of the queue, I'm interested. Also, I do not want an unexpected per-ticket model bill from an external API.
+
+--------------------------------------------------
+From: Priya Raman <priya.raman@vireoaudio.com>
+To: Arjun Mehta, Support Analytics Project
+Subject: Re: Support Data & Project Scope
+
+Understood Arjun. As per the policy document (v3.2), our blended contact cost is Rs 290. The solution needs to earn its keep by highlighting preventable root causes and saving real money. I still want the digest and leaderboard.
+
+--------------------------------------------------
+From: Neha Kulkarni <neha.k@vireoaudio.com> (Support Operations Manager)
+To: Priya Raman, Support Analytics Project
+Subject: Re: Support Data & Project Scope
+
+One operational note: Chat Frontline agents complain that customers sometimes say "I already told your colleague this" when transferred or returning. I haven't verified how widespread this is. Also, please don't rank my warranty team on ticket counts! Warranty cases take days by design because of RMA, inspection, and multi-touch workflows. Volume ranking would unfairly penalize Tier 2.
