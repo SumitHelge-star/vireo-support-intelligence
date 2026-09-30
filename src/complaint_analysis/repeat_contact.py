@@ -3,7 +3,7 @@ Repeat-contact and First-Contact Resolution (FCR) analysis module.
 Applies Operating Policy v3.2 definitions (30-day post-resolution return contact window).
 """
 
-from typing import Any, Dict, Optional
+from typing import Any, Dict, Optional, Tuple
 import pandas as pd
 import numpy as np
 

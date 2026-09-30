@@ -47,7 +47,7 @@
 ### [2:20 – 2:45] 6. Architecture, Integrity & Test Suite
 * **Visual:** Switch to **Tab 6: Data Integrity & Governance**, briefly scrolling through test verification stats and policy rules.
 * **Speaker Script:**
-  > *"Behind this dashboard is an enterprise data foundation: immutable raw CSVs, deterministic feature derivations, and 43 automated pytest unit tests validating every business rule from zero-encoded CSAT filtering to duplicate ticket deduplication. There are zero hallucinated metrics or paid API dependencies."*
+  > *"Behind this dashboard is an enterprise data foundation: immutable raw CSVs, deterministic feature derivations, and 44 automated pytest unit tests validating every business rule from zero-encoded CSAT filtering to duplicate ticket deduplication. There are zero hallucinated metrics or paid API dependencies."*
 
 ---
 

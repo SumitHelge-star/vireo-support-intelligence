@@ -22,17 +22,19 @@ def render_tier2_view(performance_payload: Dict[str, Any]) -> None:
         st.info("No Escalations & Warranty cases recorded for this reporting week.")
         return
         
-    c1, c2, c3, c4 = st.columns(4)
+    c1, c2, c3, c4, c5 = st.columns(5)
     with c1:
         st.metric(label="Cases Assigned (Inflow)", value=f"{t2.get('cases_handled', 0)} cases")
     with c2:
         st.metric(label="Cases Resolved (Closures)", value=f"{t2.get('cases_resolved', 0)} cases")
     with c3:
         avg_d = f"{t2.get('average_resolution_days'):.2f} days" if t2.get("average_resolution_days") is not None else "N/A"
-        st.metric(label="Avg Resolution Turnaround", value=avg_d)
+        st.metric(label="Avg Turnaround", value=avg_d)
     with c4:
         med_d = f"{t2.get('median_resolution_days'):.2f} days" if t2.get("median_resolution_days") is not None else "N/A"
-        st.metric(label="Median Resolution Turnaround", value=med_d)
+        st.metric(label="Median Turnaround", value=med_d)
+    with c5:
+        st.metric(label="Warranty / RMA Replacements", value=f"{t2.get('warranty_rma_count', 0)} units")
         
     st.markdown("#### ⏱️ Resolution Turnaround Duration Distribution")
     dist = t2.get("duration_distribution", {})

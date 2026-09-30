@@ -66,7 +66,7 @@ Before establishing the financial model, all previous findings from Phase 1 and 
 * **Boilerplate & Noise Finding:** Cluster 1's broad size is driven by repetitive legacy issue headers (`Pulse`, `Earbuds`, `Audio connection`). The text preprocessor successfully strips noise tags (`[AUTO-IVR]`, `[EMAIL-HEADER]`, `Order #...`) while preserving core complaint semantics.
 
 ### A5. Weekly Digest Reconciliation
-* **Sample Week 2025-W40 (2025-10-06 to 2025-10-12):**
+* **Sample Week 2025-W41 (2025-10-06 to 2025-10-12):**
   - Total Tickets: **203 tickets**
   - Repeat Contacts: **57 tickets (28.08%)**
   - Channel Repeat Cost: **₹14,220**

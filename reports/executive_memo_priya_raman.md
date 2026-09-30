@@ -17,7 +17,7 @@ To provide actionable weekly decision support without building an expensive, com
 1. **Customer Inflow & Repeat Friction:** Vireo receives ~160–210 tickets weekly (8,381 annualized). The 30-day customer repeat contact rate is **30.2%** (3,788 return tickets), heavily concentrated in Bluetooth pairing and battery drain inquiries for the *Pulse 2 Earbuds* (`VA-EB-PL2`) and *Wave Pro Headphones* (`VA-HP-WP`).
 2. **SLA Adherence & Credit Liabilities:** First-response SLA breach rate is **8.9%** (1,119 tickets across 18 months), triggering **₹3.92 Lakh** in store credit policy liabilities (₹350 credit per breach).
 3. **Frontline Throughput vs. Context:** Frontline agents (Chat, Email, Voice) close an average of 6–10 tickets weekly. Volume leaderboards provide operational visibility but are contextualized with CSAT, SLA adherence, and repeat contact rates to avoid distorting service quality.
-4. **Tier 2 Multi-Day Resolution:** Escalations & Warranty cases require deep investigation and vendor RMA shipping, averaging **5.38 days median turnaround** (5.86 days mean). Because cases span multiple days, weekly closures represent cross-week cohorts ($Closed > Assigned$ is normal operational outflow).
+4. **Tier 2 Multi-Day Resolution:** Escalations & Warranty cases require deep investigation and vendor RMA shipping, averaging **5.38 days median turnaround** (6.76 days mean for 2025-W41; 5.61 days overall). Because cases span multiple days, weekly closures represent cross-week cohorts ($Closed > Assigned$ is normal operational outflow).
 
 ---
 

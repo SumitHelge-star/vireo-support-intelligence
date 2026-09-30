@@ -56,8 +56,8 @@
 ## 9. Duration/Handle Time
 **PASS**
 * **Handle Time:** Positive durations computed for valid records; invalid legacy inverted timestamps are excluded (`NaN`) without artificial clamping.
-* **Multi-Day Cycle Time:** Tier 2 / Warranty cycle time averages 5.86 days mean / 5.38 days median.
-* **Duration Distribution:** Correctly partitioned into $<2\text{d}$, $2\text{–}5\text{d}$, $5\text{–}10\text{d}$, and $>10\text{d}$.
+* **Multi-Day Cycle Time:** Tier 2 / Warranty cycle time averages **5.38 days median** and **6.76 days mean** for sample week 2025-W41 (18-month overall dataset: 4.89 days median, 5.61 days mean).
+* **Duration Distribution (2025-W41):** Under 2 days (1 case), 2–5 days (0 cases), 5–10 days (4 cases), Over 10 days (2 cases).
 
 ## 10. Tier 1
 **PASS**
@@ -70,7 +70,15 @@
 **PASS**
 * **Strict Non-Ranking Governance:** Tier 2 agents are displayed in an unranked alphabetical workload table without ticket-volume rankings, enforcing Support Operations governance.
 * **Asynchronous Resolution ($Closed > Assigned$):** Mathematically verified as normal cross-week resolution outflow.
-* **Operational Metrics:** Displays cases assigned, cases resolved, mean/median turnaround days, longest duration, duration buckets, RMA counts, repeat contacts, and valid CSAT.
+* **Operational Metrics (2025-W41 Reconciled):**
+  - Cases Assigned (Inflow): **9 cases**
+  - Cases Resolved (Closures): **7 cases**
+  - Mean Turnaround: **6.76 days**
+  - Median Turnaround: **5.38 days**
+  - Longest Duration: **12.09 days**
+  - Hardware RMA Replacements: **1 unit** (Authoritative count of `replacement_issued == 'Y'`; 0 double-counting)
+  - 30-Day Repeat Contacts: **2 cases (28.6%)**
+  - Valid CSAT: **1 response, Score = 2.00 / 5.00**
 
 ## 12. Complaint Intelligence
 **PASS**
@@ -95,11 +103,11 @@
 * **Live Execution:** Streamlit application is actively serving on `http://localhost:8501`.
 * **Tab Verification:**
   - **Tab 1 (Executive Overview):** Weekly KPIs, WoW deltas, narrative brief.
-  - **Tab 2 (Customer Complaints):** Cluster summaries, keywords, raw ticket drill-down.
+  - **Tab 2 (Customer Complaints):** Cluster summaries, keywords, raw ticket drill-down, zero `ComplaintCluster` attribute errors.
   - **Tab 3 (Frontline Performance):** Tier 1 leaderboard, small-sample warnings, context metrics.
-  - **Tab 4 (Tier 2 Operations):** Cycle time metrics, duration distribution, unranked workload.
+  - **Tab 4 (Tier 2 Operations):** Cycle time metrics, duration distribution, unranked workload, authoritative RMA replacements.
   - **Tab 5 (Financial Impact):** Baseline breakdown, scenario simulator, break-even thresholds.
-  - **Tab 6 (Data Integrity):** Policy rules, data audit documentation.
+  - **Tab 6 (Data Integrity):** Policy rules, data audit documentation, automated test verification badge.
 
 ## 15. Failure/Edge Cases
 **PASS**
@@ -122,7 +130,7 @@
 
 ## 18. Documentation Consistency
 **PASS**
-* All 8 reports, `README.md`, `executive_memo_priya_raman.md`, `screen_recording_walkthrough.md`, and `submission_form_content.md` contain identical dates, ticket counts (12,528 / 11,875 / 653), financial numbers (₹9.45 Lakh baseline, ₹94,469 base opportunity), stakeholder names (Priya Raman, Neha Kulkarni, Arjun Mehta), and governance rules.
+* All 8 reports, `README.md`, `executive_memo_priya_raman.md`, `screen_recording_walkthrough.md`, and `submission_form_content.md` contain identical dates, ticket counts (12,528 / 11,875 / 653), financial numbers (₹9.45 Lakh baseline, ₹94,469 base opportunity), stakeholder names (Priya Raman, Neha Kulkarni, Arjun Mehta), test suite counts (44 automated tests), and governance rules.
 
 ## 19. Executive Memo
 **PASS**
@@ -141,7 +149,7 @@
 * **Passed:** 44
 * **Failed:** 0
 * **Skipped:** 0
-* **Runtime:** 17.92 seconds
+* **Test Command:** `pytest -q`
 
 ## 23. Bugs Found & Fixed
 * **Bug 1: Complaint View Runtime AttributeError**
@@ -151,6 +159,16 @@
   - **Fix:** Implemented `_get_cluster_field(c, field_name, default)` in [`app/components/complaint_view.py`](file:///c:/Users/sumit/OneDrive/Desktop/banai/app/components/complaint_view.py) that safely accesses attributes from either `ComplaintCluster` dataclass instances or dictionary representations with safe fallbacks (`"No representative tickets available."`).
   - **Regression Test:** Added [`test_complaint_view_renders_complaintcluster_objects_without_attribute_error`](file:///c:/Users/sumit/OneDrive/Desktop/banai/tests/test_phase5_dashboard.py) in `tests/test_phase5_dashboard.py`.
 
+* **Bug 2: Missing `Tuple` Typing Import in Repeat Contact Module**
+  - **Severity:** Medium (Static typing / runtime import integrity).
+  - **Description:** `src/complaint_analysis/repeat_contact.py` used `Tuple[pd.DataFrame, Dict[str, Any]]` in function return annotations without importing `Tuple` from `typing`.
+  - **Fix:** Added `Tuple` to `from typing import Any, Dict, Optional, Tuple` in [`src/complaint_analysis/repeat_contact.py`](file:///c:/Users/sumit/OneDrive/Desktop/banai/src/complaint_analysis/repeat_contact.py).
+
+* **Bug 3: Double-Counting in Tier 2 RMA / Replacement Metric**
+  - **Severity:** Medium (Reporting metric accuracy).
+  - **Description:** `src/performance/tier2_metrics.py` previously added `(category == "Warranty & Repair") + (replacement_issued == "Y")`, which counted tickets falling into both criteria twice.
+  - **Fix:** Corrected metric to count each actual replacement issued exactly once using the authoritative `replacement_issued` boolean series (`(week_resolved["replacement_issued"].astype(str).str.strip().str.upper() == "Y").sum()`). Re-ran analytics pipeline to regenerate all Phase 4 weekly performance artifacts.
+
 ## 24. Final Sign-Off
 
 * **PHASE 5:** **PASS**
@@ -158,4 +176,4 @@
 * **FINAL QA:** **PASS**
 * **FINAL SUBMISSION READY:** **YES**
 
-*No known unresolved implementation issues remain after the Phase 5 correction, Phase 6 final delivery, runtime bug fix, and final end-to-end QA verification pass.*
+*All verified issues have been fixed and validated against real runtime data and the 44-test automated suite.*

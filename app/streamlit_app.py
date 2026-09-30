@@ -142,7 +142,7 @@ def main():
             * **Transparent Financial Modeling:** Scenario reductions (5%, 10%, 20%) are labeled as planning assumptions, not historical results.
             """
         )
-        st.info("Verified by Automated Pytest Regression Suite (36 passing tests).")
+        st.info("Verified by Automated Pytest Regression Suite (44 passing tests).")
 
 
 if __name__ == "__main__":

@@ -95,7 +95,7 @@ This report implements the **Role-Governed Weekly Performance and Throughput Sys
 * **Average Resolution Turnaround:** 6.76 days
 * **Median Resolution Turnaround:** 5.38 days
 * **Longest Case Duration:** 12.09 days
-* **Warranty / RMA Replacements:** 6 units
+* **Warranty / RMA Replacements:** 1 units
 * **30-Day Customer Repeat Rate:** 28.6% (2 return contacts)
 * **Average CSAT:** 2.0 / 5.00 (n=1)
 

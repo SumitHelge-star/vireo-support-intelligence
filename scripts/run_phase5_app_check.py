@@ -54,7 +54,7 @@ def main():
     print(f"  [OK] Base Scenario Annual Opportunity: Rs {base_sc['total_annualized_gross_savings_inr']:,.0f} / year")
     print(f"  [OK] Tool Cost: Rs {base_sc['tool_annual_cost_inr']:,.0f} (Local/Free runtime)")
 
-    print("\n[4/4] Validating component importability...")
+    print("\n[4/4] Validating UI component importability & ComplaintCluster rendering path...")
     from app.components import (
         render_kpi_cards,
         render_complaint_view,
@@ -62,7 +62,28 @@ def main():
         render_tier2_view,
         render_finance_view,
     )
-    print("  [OK] All Streamlit UI components imported successfully")
+    from app.components.complaint_view import _get_cluster_field
+    from src.complaint_analysis.clustering import ComplaintCluster
+    
+    # Explicitly test ComplaintCluster extraction path
+    test_cluster = ComplaintCluster(
+        cluster_id=0,
+        label="Bluetooth Pairing Failure",
+        top_terms=["pair", "bluetooth", "phone"],
+        ticket_count=25,
+        percentage=12.5,
+        ticket_ids=["TK-001", "TK-002"],
+        dominant_category="Technical Issue",
+        dominant_channel="chat",
+        dominant_product="VA-EB-PL2",
+        avg_csat=3.8,
+        sla_breach_rate=4.0,
+        representative_ticket_ids=["TK-001", "TK-002"],
+    )
+    assert _get_cluster_field(test_cluster, "representative_ticket_ids") == ["TK-001", "TK-002"]
+    assert _get_cluster_field(test_cluster, "label") == "Bluetooth Pairing Failure"
+    assert _get_cluster_field({"label": "Dict Fallback"}, "label") == "Dict Fallback"
+    print("  [OK] All Streamlit UI components imported and ComplaintCluster rendering path verified")
 
     print("\n" + "=" * 70)
     print("PHASE 5 DASHBOARD SMOKE CHECK COMPLETED SUCCESSFULLY")

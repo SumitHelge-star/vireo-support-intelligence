@@ -98,11 +98,13 @@ def calculate_tier2_operational_summary(
         max_res_days = None
         duration_buckets = {"under_2_days": 0, "2_to_5_days": 0, "5_to_10_days": 0, "over_10_days": 0}
 
-    # Warranty / RMA replacements
-    rma_count = int(
-        (week_resolved["category"] == "Warranty & Repair").sum()
-        + (week_resolved["replacement_issued"] == "Y").sum()
-    )
+    # Hardware RMA Replacements (count each actual replacement issued exactly once)
+    if "replacement_issued" in week_resolved.columns:
+        rma_count = int(
+            (week_resolved["replacement_issued"].astype(str).str.strip().str.upper() == "Y").sum()
+        )
+    else:
+        rma_count = 0
 
     # Repeat contacts
     if "is_repeat_contact" in week_resolved.columns:

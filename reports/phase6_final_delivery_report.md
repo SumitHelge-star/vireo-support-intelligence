@@ -117,7 +117,7 @@ All numbers across the pipeline and UI trace directly to the authoritative raw d
 - [x] 3-minute Screen-Recording Walkthrough Script created (`docs/screen_recording_walkthrough.md`).
 - [x] Final Submission Form Content created (`docs/submission_form_content.md`).
 - [x] README.md updated with complete documentation and run instructions.
-- [x] 43 pytest unit tests pass with 100% success rate.
+- [x] 44 pytest unit tests pass with 100% success rate.
 - [x] All Phase 1–5 pipeline scripts execute cleanly.
 - [x] No paid APIs, synthetic data, or hallucinated numbers exist in the project.
 

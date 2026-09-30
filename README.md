@@ -67,7 +67,7 @@ banai/
 │       ├── leaderboard.py        # Tier 1 volume ranking & small-sample shielding
 │       ├── tier2_summary.py      # Tier 2 turnaround cycle-time analytics (unranked)
 │       └── weekly_metrics.py     # Unified performance payload & trend generator
-├── tests/                        # Comprehensive test suite (43 automated tests)
+├── tests/                        # Comprehensive test suite (44 automated tests)
 │   ├── test_audit.py
 │   ├── test_data_loader.py
 │   ├── test_normalization.py
@@ -126,7 +126,7 @@ python scripts/run_phase3_roi.py
 python scripts/run_phase4_performance.py
 python scripts/run_phase5_app_check.py
 
-# 4. Run full automated test suite (43 tests)
+# 4. Run full automated test suite (44 tests)
 pytest -v
 
 # 5. Launch the Streamlit Executive Dashboard
